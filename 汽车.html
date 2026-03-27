@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>汽车从右往左移动并刹车停下</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      overflow: hidden;
+    }
+
+    /* 道路 */
+    .road {
+      position: absolute;
+      bottom: 100px;
+      width: 100%;
+      height: 60px;
+      background: #333;
+    }
+
+    /* 汽车样式（简易方块代表汽车） */
+    .car {
+      position: absolute;
+      bottom: 100px;
+      right: -120px;
+      width: 100px;
+      height: 50px;
+      background: #e63946;
+      border-radius: 8px;
+      /* 动画：名称 时长 缓动  forwards保持结束状态 */
+      animation: drive 4s ease-out forwards;
+    }
+
+    /* 车轮 */
+    .car::before,
+    .car::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      width: 20px;
+      height: 20px;
+      background: #222;
+      border-radius: 50%;
+    }
+    .car::before { left: 15px; }
+    .car::after { right: 15px; }
+
+    /* 移动 + 刹车减速停下动画 */
+    @keyframes drive {
+      0% {
+        transform: translateX(0);
+      }
+      90% {
+        /* 开到中间偏左位置 */
+        transform: translateX(calc(-50vw + 100px));
+      }
+      100% {
+        /* 刹车轻微回退一点，模拟刹车惯性 */
+        transform: translateX(calc(-50vw + 120px));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="road"></div>
+  <div class="car"></div>
+</body>
+</html>
