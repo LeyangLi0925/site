@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic Equation Solver</title>
+</head>
+<body>
+    <script>
+        // 1. 获取用户输入的系数 a, b, c
+        let a = prompt("请输入二次项系数 a：");
+        let b = prompt("请输入一次项系数 b：");
+        let c = prompt("请输入常数项 c：");
+
+        // 2. 转换为数字类型
+        a = parseFloat(a);
+        b = parseFloat(b);
+        c = parseFloat(c);
+
+        // 3. 计算判别式 delta
+        let delta = b * b - 4 * a * c;
+
+        // 4. 计算两个根 x1, x2（题目假设 delta >= 0 且 a > 0）
+        let sqrtDelta = Math.sqrt(delta);
+        let x1 = (-b + sqrtDelta) / (2 * a);
+        let x2 = (-b - sqrtDelta) / (2 * a);
+
+        // 5. 用 alert 显示结果
+        alert(`方程的两个根为：\nx1 = ${x1}\nx2 = ${x2}`);
+
+        // 6. 用 console.log 输出相同结果
+        console.log("方程的两个根为：");
+        console.log("x1 =", x1);
+        console.log("x2 =", x2);
+    </script>
+</body>
+</html>
